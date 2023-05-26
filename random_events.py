@@ -1,43 +1,45 @@
 import random
 
-def random_zhishang(iq,jl):
+def random_zhishang(iq, jl):
     events1 = {
-        "知识竞赛":0.25,
-        "期中来临":0.25,
-        "中期大创":0.25，
-        "难题深究":0.25,
+        "知识竞赛": 0.25,
+        "期中考试": 0.25,
+        "中期大创": 0.25,
+        "难题深究": 0.25,
     }
 
     event1 = random.choices(list(events1.keys()), list(events1.values()), k=1)[0]
-    
+    t1 = ""
+    t2 = ""
+    t3 = ""
     if event1 == "知识竞赛":
         iq = iq + 3
-        t1 = "在学期中，你积极参加了学院组织的知识竞赛，凭借充足的知识储备和勤奋的学习备战，你成功夺得了第一名的桂冠。")
-        t2 = "智力加 3 目前智力为 "
-        t3 = None
+        t1 = "在学期中，你积极参加了学院组织的知识竞赛，凭借充足的知识储备和勤奋的学习备战，你成功夺得了第一名的桂冠。"
+        t2 = "智力加 3 目前智力为 "+str(iq)
+        t3 = ""
     elif event1 == "期中考试":
-        iq = iq + 3
-        t2 = "智力加 3 目前智力为 "
+        iq = iq + 4
+        t2 = "智力加 4 目前智力为 "+str(iq)
         if jl <= 2:
             t1 = "在学期中，你认真复习，备战期中考试，但是因为过于疲惫而病倒了，导致期中考试考得很烂。"
         else:
-            if (iq / random.randint(10,40)) >= 1:
+            if(iq / random.randint(10, 40)) >= 1:
                 t1 = "在学期中，你认真复习，备战期中考试，最终拿到好成绩。"
             else:
                 t1 = "在学期中，你认真复习，备战期中考试，但题目太难，导致期中考试考得很烂。"
-        t3 = None
+                t3 = ""
     elif event1 == "中期大创":
-        iq = iq + 2
+        iq = iq + 3
         t1 = "在学期中，你参加了大创，通过和老师同学们的合作，你顺利完成了任务，也学到了很多知识。"
-        t2 = "智力加 2 目前智力为 "
-        t3 = None
+        t2 = "智力加 3 目前智力为 "+str(iq)
+        t3 = ""
     elif event1 == "难题深究":
-        iq = iq + 1
+        iq = iq + 2
         t1 = "做作业时，你遇到了一道难题，虽然耗费了很多时间，但最终解决了它，你很满意。"
-        t2 = "智力加 1 目前智力为 "
-        if (iq / random.randint(30,60)) < 1 and jl > 1:
+        t2 = "智力加 2 目前智力为 "+str(iq)
+        if (iq / random.randint(30, 60)) < 1 and jl > 1:
             jl = jl - 1
-            t3 = "精力再减 1 目前精力为  "
+        t3 = "精力再减 1 目前精力为  "+str(jl)
     return iq, jl, t1, t2, t3
     
 def random_qingshang(eq,ml):
