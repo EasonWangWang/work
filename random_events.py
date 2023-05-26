@@ -49,17 +49,29 @@ def random_qingshang(eq,ml):
     }
 
     event2 = random.choices(list(events2.keys()), list(events2.values()), k=1)[0]
-
-    print("随机事件： ", event2)
+    
     if event2 == "室友分手":
-        qs_shiyou(eq)
+        eq = eq + 1
+        t1 = "你的室友失恋了，你看着他失魂落魄的样子，决定帮他一把。在你的劝说宽慰下，室友终于走出了失恋的阴影，得以继续正常的学习和生活。"
+        t2 = "情商加 2 目前情商为 "
+        t3 = None
     if event2 == "班级事务":
-        qs_banji(eq)
+        eq = eq + 3
+        t1 = "班级团日活动，你作为班干部为活动出谋划策，与各位同学联系，取得了满意的成果。"
+        t2 = "情商加 3 目前情商为 "
+        t3 = None
     if event2 == "投递实习":
-        qs_shixi(eq)
+        eq = eq + 2
+        t1 = "你打算接下来的假期前往公司实习，并因此准备了简历和面试。面对HR，你侃侃而谈，展现了优秀的综合素养。"
+        t2 = "情商加 2 目前情商为 "
+        t3 = None
     if event2 == "院级联谊":
-        qs_lianyi(eq,ml)
-
+        eq = eq + 2
+        ml = ml + 2
+        t1 = "学期中段，你所在的学院与其他学院举行了联谊活动。作为社交达人，你理所当然地在联谊晚会上表演了节目，赢得了阵阵喝彩。联谊结束后，你的微信收到了很多人的好友申请，你与他们交谈甚欢。"
+        t2 = "情商加 2 目前情商为 "
+        t3 = "魅力加 2 目前魅力为 "
+    return eq, ml, t1, t2, t3
 def random_tipo(tp):
     events3 = {
         "校运会":0.25,
@@ -103,27 +115,15 @@ def random_meili(eq,ml):
 
 
 def qs_shiyou(eq):
-    eq = eq + 1
-    print("你的室友失恋了，你看着他失魂落魄的样子，决定帮他一把。在你的劝说宽慰下，室友终于走出了失恋的阴影，得以继续正常的学习和生活。")
-    print("情商加 2 目前情商为 ",eq)
-
+    
 def qs_banji(eq):
-    eq = eq + 3
-    print("班级团日活动，你作为班干部为活动出谋划策，与各位同学联系，取得了满意的成果。")
-    print("情商加 3 目前情商为 ",eq)
+    
 
 def qs_shixi(eq):
-    eq = eq + 2
-    print("你打算接下来的假期前往公司实习，并因此准备了简历和面试。面对HR，你侃侃而谈，展现了优秀的综合素养。")
-    print("情商加 2 目前情商为 ",eq)
+    
 
 def qs_lianyi(eq,ml):
-    eq = eq + 2
-    ml = ml + 2
-    print("学期中段，你所在的学院与其他学院举行了联谊活动。作为社交达人，你理所当然地在联谊晚会上表演了节目，赢得了阵阵喝彩。")
-    print("联谊结束后，你的微信收到了很多人的好友申请，你与他们交谈甚欢。")
-    print("情商加 2 目前情商为 ",eq)
-    print("魅力加 2 目前魅力为 ",ml)
+    
 
 def tp_xiaoyun(tp):
     tp = tp + 3
