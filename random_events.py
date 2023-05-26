@@ -18,10 +18,14 @@ def random_zhishang(iq,jl):
     elif event1 == "期中考试":
         iq = iq + 3
         t2 = "智力加 3 目前智力为 "
-        if jl <= 2 and 
-        if (iq / random.randint(10,40)) >= 1:
-            t1 = '
-    
+        if jl <= 2:
+            t1 = "在学期中，你认真复习，备战期中考试，但是因为过于疲惫而病倒了，导致期中考试考得很烂。"
+        else:
+            if (iq / random.randint(10,40)) >= 1:
+                t1 = "在学期中，你认真复习，备战期中考试，最终拿到好成绩。"
+            else:
+                t1 = "在学期中，你认真复习，备战期中考试，但题目太难，导致期中考试考得很烂。"
+        t3 = None
     elif event1 == "中期大创":
         iq = iq + 2
         t1 = "在学期中，你参加了大创，通过和老师同学们的合作，你顺利完成了任务，也学到了很多知识。"
@@ -31,7 +35,9 @@ def random_zhishang(iq,jl):
         iq = iq + 1
         t1 = "做作业时，你遇到了一道难题，虽然耗费了很多时间，但最终解决了它，你很满意。"
         t2 = "智力加 1 目前智力为 "
-        t3 = None
+        if (iq / random.randint(30,60)) < 1 and jl > 1:
+            jl = jl - 1
+            t3 = "精力再减 1 目前精力为  "
     return iq, jl, t1, t2, t3
     
 def random_qingshang(eq,ml):
