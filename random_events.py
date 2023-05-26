@@ -1,6 +1,6 @@
 import random
 
-def random_zhishang(iq):
+def random_zhishang(iq,jl):
     events1 = {
         "知识竞赛":0.25,
         "期中来临":0.25,
@@ -11,13 +11,28 @@ def random_zhishang(iq):
     event1 = random.choices(list(events1.keys()), list(events1.values()), k=1)[0]
     
     if event1 == "知识竞赛":
-        zs_jingsai(iq)
+        iq = iq + 3
+        t1 = "在学期中，你积极参加了学院组织的知识竞赛，凭借充足的知识储备和勤奋的学习备战，你成功夺得了第一名的桂冠。")
+        t2 = "智力加 3 目前智力为 "
+        t3 = None
     elif event1 == "期中考试":
-        zs_qizhong(iq)
+        iq = iq + 3
+        t2 = "智力加 3 目前智力为 "
+        if jl <= 2 and 
+        if (iq / random.randint(10,40)) >= 1:
+            t1 = '
+    
     elif event1 == "中期大创":
-        zs_dachuang(iq)
+        iq = iq + 2
+        t1 = "在学期中，你参加了大创，通过和老师同学们的合作，你顺利完成了任务，也学到了很多知识。"
+        t2 = "智力加 2 目前智力为 "
+        t3 = None
     elif event1 == "难题深究":
-        zs_nanti(iq)
+        iq = iq + 1
+        t1 = "做作业时，你遇到了一道难题，虽然耗费了很多时间，但最终解决了它，你很满意。"
+        t2 = "智力加 1 目前智力为 "
+        t3 = None
+    return iq, jl, t1, t2, t3
     
 def random_qingshang(eq,ml):
     events2 = {
@@ -80,33 +95,6 @@ def random_meili(eq,ml):
         ml_wangyou(ml)
 
 
-
-def zs_jingsai(iq):
-    iq = iq + 3
-    t1 = "在学期中，你积极参加了学院组织的知识竞赛，凭借充足的知识储备和勤奋的学习备战，你成功夺得了第一名的桂冠。")
-    t2 = "智力加 3 目前智力为 "
-
-def zs_qizhong(iq):
-    print("面临期中考试，你选择：")
-    print("A 挑灯夜读，备战期中")
-    print("B 率性而为，直接开摆")
-    if :#在屏幕上按下A
-        iq = iq + 2
-        print("智力加 2 目前智力为 ",iq)
-
-    else ：#在屏幕上按下B
-        iq = iq - 3
-        print("智力减 3 目前智力为 ",iq)
-
-def zs_dachuang(iq):
-    iq = iq + 2
-    print("在学期中，你参加了大创，通过和老师同学们的合作，你顺利完成了任务，也学到了很多知识。")
-    print("智力加 2 目前智力为 ",iq)
-
-def zs_nanti(iq):
-    iq = iq + 1
-    print("做作业时，你遇到了一道难题，虽然耗费了很多时间，但最终解决了它，你很满意。")
-    print("智力加 1 目前智力为 ",iq)
 
 def qs_shiyou(eq):
     eq = eq + 1
