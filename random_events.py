@@ -72,6 +72,7 @@ def random_qingshang(eq,ml):
         t2 = "情商加 2 目前情商为 "
         t3 = "魅力加 2 目前魅力为 "
     return eq, ml, t1, t2, t3
+
 def random_tipo(tp):
     events3 = {
         "校运会":0.25,
