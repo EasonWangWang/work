@@ -9,17 +9,16 @@ def random_zhishang(iq):
     }
 
     event1 = random.choices(list(events1.keys()), list(events1.values()), k=1)[0]
-    print("随机事件： ", event1)
     
     if event1 == "知识竞赛":
         zs_jingsai(iq)
-    if event1 == "期中考试":
+    elif event1 == "期中考试":
         zs_qizhong(iq)
-    if event1 == "中期大创":
+    elif event1 == "中期大创":
         zs_dachuang(iq)
-    if event1 == "难题深究":
+    elif event1 == "难题深究":
         zs_nanti(iq)
-
+    
 def random_qingshang(eq,ml):
     events2 = {
         "室友分手":0.25,
@@ -84,8 +83,8 @@ def random_meili(eq,ml):
 
 def zs_jingsai(iq):
     iq = iq + 3
-    print("在学期中，你积极参加了学院组织的知识竞赛，凭借充足的知识储备和勤奋的学习备战，你成功夺得了第一名的桂冠。")
-    print("智力加 3 目前智力为 ",iq)
+    t1 = "在学期中，你积极参加了学院组织的知识竞赛，凭借充足的知识储备和勤奋的学习备战，你成功夺得了第一名的桂冠。")
+    t2 = "智力加 3 目前智力为 "
 
 def zs_qizhong(iq):
     print("面临期中考试，你选择：")
