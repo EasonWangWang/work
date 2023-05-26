@@ -154,44 +154,65 @@ def interaction2():#游戏界面
             while character.jl != 0:
                   choice1 = click(0)#按钮——选择行动
                   if choice1 == "A":
-                        Text1.setText("请选择要花精力修习的课程:")
-                        course = {"A": "高数", "B": "现代物理", "C": "概率论", "D": "近代史"}
-                        xz = {"A": "iq", "B": "eq", "C": "hp", "D": "ml"}
+                        Text1.setText("请选择要花精力修习的课程类型: A:加智商  B:加情商  C:加体魄  D:加魅力")
+                        cour1 = {"A": "线性代数", "B": "政治经济学", "C": "拳击格斗", "D": "古典音乐鉴赏"}
+                        cour2 = {"A": "经济学原理", "B": "UTJS", "C": "中国近代史纲要", "D": "高等数学"}
+                        cour3 = {"A": "中级微观经济学", "B": "工程体验与创新", "C": "养生太极拳", "D": "摄影艺术"}
+                        cour4 = {"A": "回归分析", "B": "计量经济学", "C": "划龙舟", "D": "游戏哲学"}
+                        cour5 = {"A": "博弈论", "B": "公共经济学", "C": "棒球", "D": "性别、亲密关系与社会"}
+                        cour6 = {"A": "泛函分析", "B": "行为经济学", "C": "网球", "D": "论文选题"}
+                        cour7 = {"A": "写论文！", "B": "还是写论文！", "C": "实习", "D": "实习"}
+                        cour8 = {"A": "论文还没写完？", "B": "快滚去写论文！", "C": "实习", "D": "实习"}
+                        course = [cour1, cour2, cour3, cour4, cour5, cour6, cour7, cour8]
+                        xz = {"A": "智商", "B": "情商", "C": "体魄", "D": "魅力"}
                         choice2 = click(0)#按钮——选择课程
 
                         #根据课程增加属性
                         if choice2 == "A":
-                              Text2.setText("你学习了 {}".format(course["A"]))
-                              character.learn(course["A"])
+                              Text2.setText("你学习了 {}".format(course[time-1]["A"]))
+                              character.learn(course[time-1]["A"])
                               inc = 5 + random.randint(0, 5)
                               Text3.setText("你的 {} 加 {}".format(xz["A"], inc))
                               character.iq += inc
                               changeiq(character.iq)
+                              dec = 1 + random.randint(0, 2)
+                              Text4.setText("你的 {} 减 {}".format(xz["C"], dec))
+                              character.hp -= dec
+                              changehp(character.hp)
                               
                         elif choice2 == "B":
                               print(2)
-                              Text2.setText("你学习了 {}".format(course["B"]))
-                              character.learn(course["B"])
+                              Text2.setText("你学习了 {}".format(course[time-1]["B"]))
+                              character.learn(course[time-1]["B"])
                               inc = 5 + random.randint(0, 5)
                               Text3.setText("你的 {} 加 {}".format(xz["B"], inc))
                               character.eq += inc
                               changeeq(character.eq)
-                              
+                              dec = 1 + random.randint(0, 2)
+                              Text4.setText("你的 {} 减 {}".format(xz["A"], dec))
+                              character.iq -= dec
+                              changeiq(character.iq)
                         elif choice2 == "C":
-                              Text2.setText("你学习了 {}".format(course["C"]))
-                              character.learn(course["C"])
-                              inc = 5 + random.randint(0, 5)
+                              Text2.setText("你学习了 {}".format(course[time-1]["C"]))
+                              character.learn(course[time-1]["C"])
+                              inc = 3 + random.randint(0, 3)
                               Text3.setText("你的 {} 加 {}".format(xz["C"], inc))
                               character.hp += inc
                               changehp(character.hp)
-                              
+                              Text4.setText("你的 {} 减 {}".format(xz["D"], inc))
+                              character.ml += inc
+                              changeml(character.ml)
                         elif choice2 == "D":
-                              Text2.setText("你学习了 {}".format(course["D"]))
-                              character.learn(course["D"])
+                              Text2.setText("你学习了 {}".format(course[time-1]["D"]))
+                              character.learn(course[time-1]["D"])
                               inc = 5 + random.randint(0, 5)
                               Text3.setText("你的 {} 加 {}".format(xz["D"], inc))
                               character.ml += inc
                               changeml(character.ml)
+                              dec = 1 + random.randint(0, 2)
+                              Text4.setText("你的 {} 减 {}".format(xz["B"], dec))
+                              character.eq -= dec
+                              changeeq(character.eq)
                   
                   elif  choice1 == "B":
                         ###——————###下面两段话可以再改一下
