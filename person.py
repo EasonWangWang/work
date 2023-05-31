@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
-dic={"智商=":"iq","情商":"eq","体魄":"hp","魅力":"ml"}
+dic = {"智商=":"iq","情商":"eq","体魄":"hp","魅力":"ml"}
 
 
 def add(person, aspect, inc):#属性值改变
@@ -26,20 +26,16 @@ class Person:
 
     def learn(self, course): #学习课程
         self.course.append(course)
-        
-    def date(self, friend): #约会
-        fri_now = self.friend.get(friend, 0)#目前与该好友的好感度
-        fri_inc = random.randint(-10 + int(self.ml * 0.2) + int(fri_now * 0.2), 0 + int(self.ml * 0.2) + int(fri_now * 0.2))#好感度的变化量
-        self.friend[friend] = fri_inc + fri_now
-        print("你尝试与",friend,"约会...")
-        if fri_inc > 0:
-            print("成功了！好感度加",data,"目前好感度为",self.friend[friend])
-        else:
-            print("失败了-_-||好感度减",abs(data),"目前好感度为",self.friend[friend])
-        if self.friend[friend] >= 90:
-            print("你向",friend,"表露了你的心意...你们在一起了")
-        if self.friend[friend] <= -50:
-            print("”家人们！谁懂啊？",self.name,"真下头~“",friend,"大叫着跑开了")
+        return
+    
+    def make_friend(self, friend):
+        if friend not in self.friend:
+            self.friend[friend] = 0
+        return
+    
+    def change_friendship(self, friend, inc)
+        self.friend[friend] += inc
+       
 
 
 
