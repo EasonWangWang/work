@@ -74,7 +74,7 @@ def random_qingshang(eq,ml):
         t3 = "魅力加 2 目前魅力为 "+str(ml)
     return eq, ml, t1, t2, t3
 
-def random_tipo(tp):
+def random_tipo(tp,iq):
     events3 = {
         "校运会":0.25,
         "伤风寒":0.25,
@@ -83,16 +83,35 @@ def random_tipo(tp):
     }
 
     event3 = random.choices(list(events3.keys()), list(events3.values()), k=1)[0]
-
-    print("随机事件： ", event3)
+    t1 = ""
+    t2 = ""
+    t3 = ""
     if event3 == "校运会":
-        tp_xiaoyun(tp)
+        tp = tp + 3
+        t1 = "学校举办了校运会，你积极参加，虽然名次没有很高，但在准备校运会的过程中，你得到了身体与意志的锻炼。"
+        t2 = "体魄加 3 目前体魄为 "+str(tp)
+
+
     if event3 == "伤风寒":
-        tp_fenghan(tp)
+        tp = tp - 1
+        t1 = "或许是不适应骤变的天气，你得了风寒，不得不在宿舍养病。几天后你康复了，但感觉自己比以前虚了不少。"
+        t2 = "体魄减 1 目前体魄为 "+str(tp)
+
     if event3 == "刷跑时间":
-        tp_shuapao(tp)
+        t1 = "校园跑即将截止，你还有将近一半路程没有完成，你选择： "
+        t2= "每天跑圈,坚持锻炼"
+        if tp >= iq:
+            tp = tp + 1
+            t3 = "体魄加 1 目前体魄为 "+str(tp)
+        else:
+            tp = tp - 1
+            t3 = "体魄减 1 目前体魄为 "+str(tp)
+
     if event3 == "每日撸铁":
-        tp_lutie(tp)
+        tp = tp + 2
+        t1 = "最近你迷上了健身，天天泡在健身房享受撸铁的快乐，那挥洒汗水的滋味让你难以拒绝。"
+        t2 = "体魄加 2 目前体魄为 "+str(tp)
+    return tp,t1,t2,t3
 
 def random_meili(eq,ml):
     events4 = {
@@ -128,33 +147,6 @@ def random_meili(eq,ml):
     return eq,ml,t1,t2,t3
 
 
-    
-
-def tp_xiaoyun(tp):
-    tp = tp + 3
-    print("学校举办了校运会，你积极参加，虽然名次没有很高，但在准备校运会的过程中，你得到了身体与意志的锻炼。")
-    print("体魄加 3 目前体魄为 ",tp)
-
-def tp_fenghan(tp):
-    tp = tp - 1
-    print("或许是不适应骤变的天气，你得了风寒，不得不在宿舍养病。几天后你康复了，但感觉自己比以前虚了不少。")
-    print("体魄减 1 目前体魄为 ",tp)
-
-def tp_shuapao(tp):
-    print("校园跑即将截止，你还有将近一半路程没有完成，你选择： ")
-    print("A 每天跑圈 坚持锻炼")
-    print("B 骑上单车 享受凉风")
-    if :
-        tp = tp + 1
-        print("体魄加 1 目前体魄为 ", tp)
-    else :
-        tp = tp - 1
-        print("体魄减 1 目前体魄为 ", tp)
-
-def tp_lutie(tp):
-    tp = tp + 2
-    print("最近你迷上了健身，天天泡在健身房享受撸铁的快乐，那挥洒汗水的滋味让你难以拒绝。")
-    print("体魄加 2 目前体魄为 ",tp)
 
 
 def random_events(iq,eq,tp,ml):
@@ -178,4 +170,3 @@ def random_events(iq,eq,tp,ml):
         random_tipo(tp)
     if event == "魅力":
         random_meili(eq,ml)
-
