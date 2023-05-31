@@ -111,7 +111,7 @@ def random_tipo(tp,iq):
         tp = tp + 2
         t1 = "最近你迷上了健身，天天泡在健身房享受撸铁的快乐，那挥洒汗水的滋味让你难以拒绝。"
         t2 = "体魄加 2 目前体魄为 "+str(tp)
-    return tp,t1,t2,t3
+    return tp,iq,t1,t2,t3
 
 def random_meili(eq,ml):
     events4 = {
