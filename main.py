@@ -158,6 +158,7 @@ def interaction2():#游戏界面
       #正式循环
       show(character.jl,character.iq,character.eq,character.hp,character.ml,time)
       while time != 9:
+            Text1.setText("请选择四种消耗精力值的大学活动：A 修习课程 B：随机事件 C：约会 D：摆烂")
             while character.jl != 0:
                   choice1 = click(0)#按钮——选择行动
                   if choice1 == "A":
