@@ -6,7 +6,6 @@ import random_events
 
 interface2 = GraphWin("游戏界面", 1000, 500,autoflush=False)
 
-
 def interaction1():#登入界面
       interface1= GraphWin("登入界面",1000,500)
       interface1.setBackground("aqua")
@@ -25,10 +24,11 @@ def interaction1():#登入界面
       while not end.clicked(pt):
             if start.clicked(pt):
                   interface1.close()
-                  interface2.focus()
                   interaction2()
             else:
                   pt = interface1.getMouse()
+      else:
+            interface1.close()
                   
 def interaction2():#游戏界面
       #绘制界面
@@ -89,6 +89,12 @@ def interaction2():#游戏界面
       eqtext = Text(Point(185, 240), "")
       hptext = Text(Point(185,280),"")
       mltext = Text(Point(185, 320), "")
+      course1text = Text(Point(400,380),"高等代数")
+      course2text = Text(Point(400, 380), "高等代数")
+      course3text = Text(Point(400, 380), "高等代数")
+      course1text.draw(interface2)
+      course2text.draw(interface2)
+      course3text.draw(interface2)
       timetext.draw(interface2)
       jltext.draw(interface2)
       iqtext.draw(interface2)
@@ -150,11 +156,15 @@ def interaction2():#游戏界面
           changetime(time)
 
       #正式循环
+      show(character.jl,character.iq,character.eq,character.hp,character.ml,time)
       while time != 9:
             while character.jl != 0:
                   choice1 = click(0)#按钮——选择行动
                   if choice1 == "A":
                         Text1.setText("请选择要花精力修习的课程类型: A:加智商  B:加情商  C:加体魄  D:加魅力")
+                        Text2.setText("")
+                        Text3.setText("")
+                        Text4.setText("")
                         cour1 = {"A": "线性代数", "B": "政治经济学", "C": "拳击格斗", "D": "古典音乐鉴赏"}
                         cour2 = {"A": "经济学原理", "B": "UTJS", "C": "中国近代史纲要", "D": "高等数学"}
                         cour3 = {"A": "中级微观经济学", "B": "工程体验与创新", "C": "养生太极拳", "D": "摄影艺术"}
@@ -168,24 +178,27 @@ def interaction2():#游戏界面
                         choice2 = click(0)#按钮——选择课程
 
                         #根据课程增加属性
-                                                if choice2 == "A":
-                              movement = random_events.random_zhishang(character.iq)
-                              Text2.setText(movement[2])
-                              Text3.setText(movement[3])
-                              Text4.setText(movement[4])
-                              character.iq = movement[0]
-                              character.jl = movement[1]
+                        if choice2 == "A":
+                              Text2.setText("你学习了 {}".format(course[time - 1]["A"]))
+                              character.learn(course[time - 1]["A"])
+                              inc = 5 + random.randint(0, 3)
+                              Text3.setText("你的 {} 加 {}".format(xz["A"], inc))
+                              character.iq += inc
                               changeiq(character.iq)
-                              changejl(character.jl)
+                              dec = 1 + random.randint(0, 2)
+                              Text4.setText("你的 {} 减 {}".format(xz["C"], inc))
+                              character.hp += inc
+                              changehp(character.hp)
                               
                         elif choice2 == "B":
-                              movement = random_events.random_zhishang(character.eq,character.ml)
-                              Text2.setText(movement[2])
-                              Text3.setText(movement[3])
-                              Text4.setText(movement[4])
-                              character.eq = movement[0]
-                              character.ml = movement[1]
+                              Text2.setText("你学习了 {}".format(course[time - 1]["B"]))
+                              character.learn(course[time - 1]["B"])
+                              inc = 3 + random.randint(0, 3)
+                              Text3.setText("你的 {} 加 {}".format(xz["B"], inc))
+                              character.eq += inc
                               changeeq(character.eq)
+                              Text4.setText("你的 {} 加 {}".format(xz["D"], inc))
+                              character.ml += inc
                               changeml(character.ml)
                               
                         elif choice2 == "C":
@@ -211,47 +224,55 @@ def interaction2():#游戏界面
                               changeeq(character.eq)
                   
                   elif  choice1 == "B":
-                        ###——————###下面两段话可以再改一下
-                        Text1.setText("请选择随机事件类型:")
+                        Text1.setText("请选择随机事件类型: A：智商 B：情商 C：体魄 D：魅力")
+                        Text2.setText("")
+                        Text3.setText("")
+                        Text4.setText("")
                         course = {"A": "智商", "B": "情商", "C": "体魄", "D": "魅力"}
-                        ###——————###
                         choice2 = click(0)#按钮——选择随机事件
                         
                         #根据事件增加属性
                         if choice2 == "A":
-                              movement = random_events.random_zhishang(character.iq)
-                              ###——————###这两段话改一下
-                              #Text2.setText("你学习了 {}".format(course["A"]))
-                              #Text3.setText("你的 {} 加 {}".format(xz["A"], inc))
+                              movement = random_events.random_zhishang(character.iq,character.jl)
+                              Text2.setText(movement[2])
+                              Text3.setText(movement[3])
+                              Text4.setText(movement[4])
                               character.iq = movement[0]
+                              character.jl = movement[1]
                               changeiq(character.iq)
+                              changejl(character.jl)
                               
                         elif choice2 == "B":
-                              print(2)
-                              Text2.setText("你学习了 {}".format(course["B"]))
-                              character.learn(course["B"])
-                              inc = 5 + random.randint(0, 5)
-                              Text3.setText("你的 {} 加 {}".format(xz["B"], inc))
-                              character.eq += inc
+                              movement = random_events.random_qingshang(character.eq, character.ml)
+                              Text2.setText(movement[2])
+                              Text3.setText(movement[3])
+                              Text4.setText(movement[4])
+                              character.eq = movement[0]
+                              character.ml = movement[1]
                               changeeq(character.eq)
-                              
-                        elif choice2 == "C":
-                              Text2.setText("你学习了 {}".format(course["C"]))
-                              character.learn(course["C"])
-                              inc = 5 + random.randint(0, 5)
-                              Text3.setText("你的 {} 加 {}".format(xz["C"], inc))
-                              character.hp += inc
-                              changehp(character.hp)
-                              
-                        elif choice2 == "D":
-                              Text2.setText("你学习了 {}".format(course["D"]))
-                              character.learn(course["D"])
-                              inc = 5 + random.randint(0, 5)
-                              Text3.setText("你的 {} 加 {}".format(xz["D"], inc))
-                              character.ml += inc
                               changeml(character.ml)
                               
-                  character.jl -= 1
+                        elif choice2 == "C":
+                              movement = random_events.random_tipo(character.hp,character.iq)
+                              Text2.setText(movement[2])
+                              Text3.setText(movement[3])
+                              Text4.setText(movement[4])
+                              character.hp = movement[0]
+                              character.iq = movement[1]
+                              changehp(character.hp)
+                              changeiq(character.iq)
+                              
+                        elif choice2 == "D":
+                              movement = random_events.random_meili(character.eq, character.ml)
+                              Text2.setText(movement[2])
+                              Text3.setText(movement[3])
+                              Text4.setText(movement[4])
+                              character.eq = movement[0]
+                              character.ml = movement[1]
+                              changeeq(character.eq)
+                              changeml(character.ml)
+
+                  character.jl =character.jl - 1
                   changejl(character.jl)
             else:
                   time += 1
@@ -272,7 +293,6 @@ interaction1()
 interaction2()
 print('show')
 show(character.jl, character.iq, character.eq, character.shp, character.ml, time)
-
 
 
 
