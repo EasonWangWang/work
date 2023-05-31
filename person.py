@@ -35,7 +35,10 @@ class Person:
     
     def change_friendship(self, friend, inc)
         self.friend[friend] += inc
-       
+        return
+    
+    def ask_friendship(self, friend)
+        return self.friend(friend)
 
 
 
