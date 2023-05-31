@@ -9,6 +9,8 @@ interface2 = GraphWin("游戏界面", 1000, 500,autoflush=False)
 def interaction1():#登入界面
       interface1= GraphWin("登入界面",1000,500)
       interface1.setBackground("aqua")
+      image1 = Image(Point(500, 250), "例子.gif")
+      image1.draw(interface1)
       #start和end两个按钮
       start= Rectangle(Point(400,100),Point(600,200))
       start.draw(interface1)
